@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Code Converter</title>
+	<link rel="stylesheet" href="grid.min.css">
+	<style>
+
+		html {
+			font-size: 58.5%;
+			scroll-behavior: smooth;
+		}
+
+		@media (min-width: 576px){
+		    html{
+		        font-size: 59.5%;
+		    }
+		}
+
+		@media (min-width: 768px){
+		    html{
+		        font-size: 60.5%;
+		    }
+		}
+
+		@media (min-width: 992px){
+		    html{
+		        font-size: 61.5%;
+		    }
+		}
+
+		@media (min-width: 1200px){
+		    html{
+		        font-size: 62.5%;
+		    }
+		}
+
+		body{
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+
+			margin: 0;
+		}
+
+		textarea{
+			min-height: 500px;
+			margin-bottom: 2rem;
+		}
+
+
+		.btn {
+			color: inherit;
+			font-size: 1.6rem;
+			line-height: 1.6;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+			display: inline-block;
+			width: auto;
+			padding: .4rem 1.2rem;
+			margin-bottom: .4rem;
+			border-radius:4px;
+			background: lightgray;
+			border: 1px solid black;
+			cursor: pointer;
+		}
+
+		.btn-block {
+			display: block;
+			width: 100%;
+		}
+
+		.btn-secondary {
+			color: #fff;
+			background-color: #6c757d;
+			border-color: #6c757d;
+		}
+
+		.form-control {
+			display:block;
+			width:100%;
+			height:3.8rem;
+			padding:.4rem 1.2rem;
+			font-size:1.6rem;
+			 line-height:1.5; 
+			color:#495057;
+			background-color:#fff;
+			background-clip:padding-box;
+			border:1px solid #ced4da;
+			border-radius:4px;
+		}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<textarea id="input" class="form-control" placeholder="Input"></textarea>
+				<button id="convert" class="btn btn-secondary btn-block">Convert</button>
+			</div>
+			<div class="col-lg-6">
+				<textarea id="output" class="form-control" placeholder="Output"></textarea>
+				<button id="clear" class="btn btn-secondary btn-block">Clear</button>
+			</div>
+		</div>
+	</div>
+	<script>
+
+		function selectElement(selector){
+			return document.querySelector(selector);
+		}
+
+		var convert = selectElement("#convert");
+		var clear = selectElement("#clear");
+
+		let output = selectElement("#output");
+		let input = selectElement("#input");
+
+		convert.addEventListener("click", function(){
+
+			let converted = input.value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+			// let converted = input.value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\t/g, '');
+			output.value = converted;
+		});
+
+		clear.addEventListener("click", function(){
+			output.value = "";
+			input.value = "";
+		});
+	</script>
+</body>
+</html>
