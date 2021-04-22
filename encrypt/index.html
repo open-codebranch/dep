@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Code Converter</title>
+	<link rel="stylesheet" href="assets/font/HCo Operator Mono/font.css">
+	<link rel="stylesheet" href="assets/grid.min.css">
+	<style>
+
+		*{font-family:monospace; box-sizing: border-box}
+		html {font-size:8px;scroll-behavior:smooth}@media (min-width:576px){html{font-size:8.5px}}@media (min-width:768px){html{font-size:9px}}@media (min-width:992px){html{font-size:9.5px}}@media (min-width:1200px){html{font-size:10px}}
+
+
+		body{background:#111;color:orange;position:relative;margin:5rem 0 0 0;min-height:100vh;font-size:1.6rem}
+		.btn {font-family:monospace;font-size:2rem;line-height:1.6;text-align:center;padding:.4rem 1.2rem;margin-bottom:.4rem;border-radius:4px;border:1px solid black;cursor:pointer;display:block;width:100%;background:#000;font-weight:700;color: orange;box-shadow: inset 1px 1px 3px #ffffff2b,1px 1px 8px orange;}
+		.form-control {display:block;width:100%;height:3.8rem;padding:.4rem 1.2rem;font-size:1.6rem;line-height:1.5; color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:4px}
+
+		p{margin-top:0}
+		.title{font-size:2.5rem;font-weight:700;font-style:italic;text-align:center}
+		textarea.form-control{min-height:25rem;height:55vh;margin-bottom:2rem}
+		label{font-size:1.8rem;margin-bottom:2rem;display:block}
+		input{margin-bottom:2rem}
+
+		.pb-50{padding-bottom:5rem}
+		.mb-20{margin-bottom:2rem}
+
+		.result .btn{position:absolute;width:auto;right:1rem;top:1rem}
+		.result .title{margin-top:.6rem;font-weight: 400}
+		.wrapper{position:relative}
+		svg{width:1.6rem}
+		#copyDecrypted, #copyEncrypted{background:#000000c9;color:orange;box-shadow: inset 1px 1px 3px #ffffff2b;}
+		#copyDecrypted:active, #copyEncrypted:active{background:none; color:#111}
+
+		.footer h1{font-family: "HCo Operator Mono Italic",monospace;font-weight: 400;text-align:center;padding-bottom:5rem}
+		.footer a{font-family: "HCo Operator Mono Bold Italic",monospace;color:orange;}
+		.notification{position:fixed;top:0;left:0;padding:2rem;z-index:100;width:100%;text-align:center;background:#156767;color:#fff}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+
+
+			<div class="col-12"><p class="title">Encryptor</p></div>
+			<div class="col-lg-6 pb-50">
+
+				<label for="encryptionSalt">Salt</label>
+				<input type="text" id="encryptionSalt" class="form-control">
+
+				<label for="encrypted">Paste the texts that you want to Decrypt</label>
+				<textarea id="decrypted" class="form-control"></textarea>
+
+				<button id="encrypt" class="btn">Encrypt</button>
+
+			</div>
+
+			<div class="col-lg-6 pb-50 result">
+				<p class="title">RESULT</p>
+				<div class="wrapper">
+					<button id="copyEncrypted" class="btn mb-20"><i class="fas fa-copy"></i></button>
+					<textarea id="resultOfEncrypt" class="form-control"></textarea>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="col-12"><p class="title">Decryptor</p></div>
+			<div class="col-lg-6 pb-50">
+
+				<label for="decryptionSalt">Salt</label>
+				<input type="text" id="decryptionSalt" class="form-control">
+
+				<label for="encrypted">Paste the texts that you want to Encrypt</label>
+				<textarea id="encrypted" class="form-control"></textarea>
+
+				<button id="decrypt" class="btn">Decrypt</button>
+			</div>
+
+			<div class="col-lg-6 pb-50 result">
+				<p class="title">RESULT</p>
+				<div class="wrapper">
+					<button id="copyDecrypted" class="btn mb-20"><i class="fas fa-copy"></i></button>
+					<textarea id="resultOfDecrypt" class="form-control"></textarea>
+				</div>
+			</div>
+
+			<div class="col-12 footer">
+				<h1>Created by: <a href="https://facebook.com/ebrahimsinitiative.fb">Ebrahim</a></h1>
+			</div>
+
+			<div class="injectNotification"></div>
+		</div>
+	</div>
+	<script src="assets/icon-control.js"></script>
+	<script src="assets/encryptor-decryptor.js"></script>
+	<script>
+
+		const selectElement = selector => document.querySelector(selector);
+
+		let decrypted = selectElement("#decrypted");
+
+		let encrypted = selectElement("#encrypted");
+
+		let injectNotification = selectElement(".injectNotification");
+
+		selectElement("#encrypt").addEventListener("click", function(){
+
+			// Handling Encryption here
+			const myCipher = cipher(selectElement("#encryptionSalt").value);
+			selectElement("#resultOfEncrypt").value = myCipher(decrypted.value);
+
+			// Handling notification here
+			injectNotification.innerHTML = `<div class="notification">Your text is Successfully Encrypted....</div>`;
+			setTimeout(function(){selectElement(".notification").remove()}, 4000);
+
+		});
+
+		selectElement("#decrypt").addEventListener("click", function(){
+
+			// Handling Decryption here
+			const myDecipher = decipher(selectElement("#decryptionSalt").value);
+			selectElement("#resultOfDecrypt").value = myDecipher(encrypted.value);
+
+			// Handling notification here
+			injectNotification.innerHTML = `<div class="notification">Your text is Successfully Decrypted....</div>`;
+			setTimeout(function(){selectElement(".notification").remove()}, 4000);
+
+		});
+
+		// Handling copy function here
+		selectElement("#copyEncrypted").addEventListener("click", function(){
+			navigator.clipboard.writeText(selectElement("#resultOfEncrypt").value),alert("Copied Encrypted...")
+		});
+
+		selectElement("#copyDecrypted").addEventListener("click", function(){
+			navigator.clipboard.writeText(selectElement("#resultOfDecrypt").value),alert("Copied Decrypted...")
+		});
+	</script>
+</body>
+</html>
