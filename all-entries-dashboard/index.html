@@ -14,7 +14,6 @@
 
 <body>
     <div class="container">
-        <textarea rows="5" wrap = "off" id="draft" name="draft" placeholder=">>> for draft" spellcheck="false"></textarea>
         <div class="main-block">
             <h1>All Entries Dashboard<br>Link Generator</h1>
             <p id="creator">Created by: <a href="https://www.facebook.com/ebrahim.fb">Ebrahim Khalil</a></p>
@@ -45,7 +44,7 @@
             navigator.clipboard.writeText(link);
 
             // show notification
-            e("body").innerHTML += `<div id="custom_notification" style="position:fixed;top:0;left:0;margin:0;padding:2rem;z-index:100;width:100%;text-align:center;background:#156767;color:#fff;">Successfully copied to clipboard....</div>`;
+            e("body").innerHTML += `<div id="custom_notification" style="position:fixed;top:0;left:0;margin:0;padding: 2rem 0;z-index:100;width:100%;text-align:center;background:#156767;color:#fff;">Successfully copied to clipboard....</div>`;
             setTimeout(function(){e("#custom_notification").remove()}, 3000);
 
         });
