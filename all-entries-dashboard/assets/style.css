@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    margin: 0 30px;
 }
 textarea {
     width: 100%;
@@ -19,6 +20,9 @@ textarea {
     padding: 10px;
     border-radius: 5px;
     line-height: 1.7;
+}
+#form {
+    margin: 0 30px;
 }
 #icon,
 label {
@@ -77,9 +81,6 @@ hr {
     border: 1px solid #ccc;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
     background: white;
-}
-div {
-    margin: 0 30px;
 }
 label#icon {
     margin: 0;
