@@ -1,11 +1,36 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Link Generator by Ebrahim Khalil</title><link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"><link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/122407/woff2.css" media="all"><link rel="stylesheet" href="assets/style.css"></head><body><div class="main-block"><h1>All Entries Dashboard<br>Link Generator</h1><p id="creator">Created by: <a href="https://www.facebook.com/ebrahim.fb">Ebrahim Khalil</a></p><div id="form"><hr><label id="icon" for="contest_link"><i class="fas fa-link"></i></label><input type="text" name="contest_link" id="contest_link" placeholder="Contest link" required><label id="icon" for="profile_link"><i class="fas fa-user"></i></label><input type="text" name="profile_link" id="profile_link" placeholder="Freelancer's profile link" required><label id="icon" for="image_link"><i class="fas fa-image"></i></label><input type="text" name="image_link" id="image_link" placeholder="Entry image link" required><hr><div class="btn-block"><button type="submit" id="go">Go</button><input type="text" id="output_link"></div></div></div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Link Generator by Ebrahim Khalil</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/122407/woff2.css" media="all">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="main-block">
+        <h1>All Entries Dashboard<br>Link Generator</h1>
+        <p id="creator">Created by: <a href="https://www.facebook.com/ebrahim.fb">Ebrahim Khalil</a></p>
+        <div id="form">
+            <hr><label id="icon" for="contest_link"><i class="fas fa-link"></i></label><input type="text" name="contest_link" id="contest_link" placeholder="Contest link" required><label id="icon" for="profile_link"><i class="fas fa-user"></i></label>
+            <input
+                type="text" name="profile_link" id="profile_link" placeholder="Freelancer's profile link" required><label id="icon" for="image_link"><i class="fas fa-image"></i></label><input type="text" name="image_link" id="image_link" placeholder="Entry image link" required>
+                <hr>
+                <div class="btn-block"><button type="submit" id="go">Go</button><input type="text" id="output_link"><button type="button" id="give_link">Give link</button></div>
+        </div>
+    </div>
 <script>
 
 document.querySelector("#go").addEventListener("click",function(){
 window.location.href=document.querySelector("#contest_link").value+"-by-"+document.querySelector("#profile_link").value.split("/")[4]+"-"+document.querySelector("#image_link").value.split("/")[5]+".html?ngsw-bypass=&w=f";
 });
   
-document.querySelector("#go").addEventListener("click",function(){
+document.querySelector("#give_link").addEventListener("click",function(){
   document.querySelector("#output_link").value = document.querySelector("#contest_link").value+"-by-"+document.querySelector("#profile_link").value.split("/")[4]+"-"+document.querySelector("#image_link").value.split("/")[5]+".html?ngsw-bypass=&w=f";
 });
 
