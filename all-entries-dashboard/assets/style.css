@@ -71,12 +71,12 @@ hr {
     opacity: 0.3;
 }
 .main-block {
-    max-width: 340px;
-    margin: auto;
+    max-width: 380px;
+    margin: auto 40px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
-    background: #fffbff;
+    background: white;
 }
 div {
     margin: 0 30px;
