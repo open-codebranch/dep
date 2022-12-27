@@ -21,17 +21,14 @@
             <input
                 type="text" name="profile_link" id="profile_link" placeholder="Freelancer's profile link" required><label id="icon" for="image_link"><i class="fas fa-image"></i></label><input type="text" name="image_link" id="image_link" placeholder="Entry image link" required>
                 <hr>
-                <div class="btn-block"><button type="submit" id="go">Go</button><input type="text" id="output_link"><button type="button" id="give_link">Give link</button></div>
+                <div class="btn-block"><button type="submit" id="go">Go</button></div>
         </div>
     </div>
-<script>
+    <script>
+        document.querySelector("#go").addEventListener("click", function() {
+            window.location.href = document.querySelector("#contest_link").value + "-by-" + document.querySelector("#profile_link").value.split("/")[4] + "-" + document.querySelector("#image_link").value.split("/")[5] + ".html?ngsw-bypass=&w=f"
+        });
+    </script>
+</body>
 
-document.querySelector("#go").addEventListener("click",function(){
-window.location.href=document.querySelector("#contest_link").value+"-by-"+document.querySelector("#profile_link").value.split("/")[4]+"-"+document.querySelector("#image_link").value.split("/")[5]+".html?ngsw-bypass=&w=f";
-});
-  
-document.querySelector("#give_link").addEventListener("click",function(){
-  document.querySelector("#output_link").value = document.querySelector("#contest_link").value+"-by-"+document.querySelector("#profile_link").value.split("/")[4]+"-"+document.querySelector("#image_link").value.split("/")[5]+".html?ngsw-bypass=&w=f";
-});
-
-</script></body></html>
+</html>
