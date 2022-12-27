@@ -1,1 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');body{background:linear-gradient(135deg, #7117ea 0%,#ea6060 100%)}#icon,label{display:inline-block}#icon,button{background:#360049;color:#fff}#creator,#icon,.btn-block,h1{text-align:center}body,html{display:flex;justify-content:center;height:100%}body,div,form,input,p{padding:0;margin:0;outline:0;font-family: Arial,sans-serif;font-size:16px;color:#666}h1{margin-bottom:0}h1, #creator{font-family: 'Baloo Da 2',Arial, sans-serif}.main-block,button,h1{padding:10px 0}h1{font-size:24px;font-weight:900}p{font-size:14px}hr{color:#a9a9a9;opacity:.3}.main-block{max-width:340px;margin:auto;border-radius:5px;border:1px solid #ccc;box-shadow:1px 2px 5px rgba(0,0,0,.31);background:#fffbff}div{margin:0 30px}label#icon{margin:0;border-radius:5px 0 0 5px}label.radio{position:relative;padding-top:4px;margin-right:20px;text-indent:30px;overflow:visible;cursor:pointer}input[type=text]{width:calc(100% - 57px);height:36px;margin:13px 0 0 -5px;padding-left:10px;border-radius:0 5px 5px 0;border:1px solid #cbc9c9;box-shadow:1px 2px 5px rgba(0,0,0,.09);background:#fff}#icon{padding:9.3px 15px;box-shadow:1px 2px 5px rgba(0,0,0,.09)}.btn-block{margin-top:10px}button{width:100%;margin:10px auto;border-radius:5px;border:none;font-size:14px}button:hover{background:#57026C}a{color:#360049}
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap");
+html, body {
+    height: 100%;
+}
+body {
+    background: linear-gradient(135deg, #7117ea 0%, #ea6060 100%);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+textarea {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: 1.7;
+}
+#icon,
+label {
+    display: inline-block;
+}
+#icon,
+button {
+    background: #360049;
+    color: #fff;
+}
+#creator,
+#icon,
+.btn-block,
+h1 {
+    text-align: center;
+}
+body,
+div,
+form,
+input,
+p {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+h1 {
+    margin-bottom: 0;
+}
+h1,
+#creator {
+    font-family: "Baloo Da 2", Arial, sans-serif;
+}
+.main-block,
+button,
+h1 {
+    padding: 10px 0;
+}
+h1 {
+    font-size: 24px;
+    font-weight: 900;
+}
+p {
+    font-size: 14px;
+}
+hr {
+    color: #a9a9a9;
+    opacity: 0.3;
+}
+.main-block {
+    max-width: 340px;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+    background: #fffbff;
+}
+div {
+    margin: 0 30px;
+}
+label#icon {
+    margin: 0;
+    border-radius: 5px 0 0 5px;
+}
+input[type="text"] {
+    width: calc(100% - 57px);
+    height: 36px;
+    margin: 13px 0 0 -5px;
+    padding-left: 10px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #cbc9c9;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.09);
+    background: #fff;
+}
+#icon {
+    padding: 9.3px 15px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.09);
+}
+.btn-block {
+    margin-top: 10px;
+}
+button {
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+}
+button:hover {
+    background: #57026c;
+}
+a {
+    color: #360049;
+}
