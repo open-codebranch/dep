@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>120 Seconds Countdown Timer</title>
+	<style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('https://github.com/open-codebranch/dep/blob/main/SutonnyMJ%20Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+		body {
+/*			display: flex;
+			justify-content: center;
+			align-items: center;*/
+			height: 100vh;
+			background-color: #111;
+			color: #fff;
+			font-family: 'CustomFont', sans-serif;
+			text-align: center;
+		}
+		div {
+			font-size: 4rem;
+		}
+		#timer {
+			font-size: 2rem;
+			font-family: monospace;
+		}
+		#display {
+			font-size: 8rem;
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">02:00</div>
+	<div id="display" style="color: orange;">000</div>
+	<div id="total">00</div>
+	<div id="right"  style="color: green;">00</div>
+	<div id="wrong"  style="color: red;">00</div>
+
+	<div id="speed">000</div>
+	<div id="accuracy">000</div>
+	<div id="score">000</div>
+
+
+
+
+
+<script>
+
+
+
+
+const $ = msg => console.log(`------------------ ${msg}`);
+
+const e = selector => document.querySelector(selector);
+const el = selector => document.querySelectorAll(selector);
+const eT = selector => document.querySelector(selector).innerText;
+
+const pad = (num, digit) => String(num).padStart(digit, '0');
+const logClick = (element, logText) => { element.addEventListener('click', () => { console.log(logText); }); }
+
+
+
+
+// -----------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
+
+
+
+
+let time = 119;
+let timerInterval;	// Declare timerInterval in a higher scope
+const timerElement = e("#timer");
+
+let isFirstClick = true;	// Flag to track if it's the first click
+const invalidSuffixes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "20", "30", "40", "50", "60", "70", "80", "90"];
+
+
+
+
+// -----------------------------------------------------------------------------------
+
+
+
+
+function updateTimer() {
+	const minutes = Math.floor(time / 60);
+	const seconds = time % 60;
+	timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+	time--;
+
+	if (time < 0) {
+		clearInterval(timerInterval);	// Now timerInterval is accessible
+		timerElement.textContent = "Time's up!";
+	}
+}
+
+function generateValidRandomNumber() {
+    let randomNumber;
+    let suffix;
+
+    do {
+        // Generate a random 3-digit number
+        randomNumber = Math.floor(Math.random() * 900) + 100;
+        // Get the last two digits as a string
+        suffix = String(randomNumber).slice(-2);
+    } while (invalidSuffixes.includes(suffix)); // Repeat if the suffix is invalid
+
+    return randomNumber;
+}
+
+function result() {
+	if (time < 0) {
+		e("#speed").innerText = 120 / Number(eT("#total")).toFixed(2);
+		e("#accuracy").innerText = (Number(eT("#total") / Number(eT("#right"))))
+		.toFixed(2);
+		e("#score").innerText = "";
+	}
+}
+
+
+
+
+// -----------------------------------------------------------------------------------
+
+
+
+
+e("#right").addEventListener('click', () => {
+	e("#total").innerText = String(Number(eT("#total")) + 1).padStart(2, '0');
+	e("#right").innerText = String(Number(eT("#right")) + 1).padStart(2, '0');
+	e("#display").innerText = generateValidRandomNumber();
+});
+
+e("#wrong").addEventListener('click', () => {
+	e("#total").innerText = pad(Number(eT("#total")) + 1);
+	e("#wrong").innerText = String(Number(eT("#wrong")) + 1).padStart(2, '0');
+	e("#display").innerText = generateValidRandomNumber();
+});
+
+e("#display").addEventListener('click', () => {
+	// Execute only on first click
+	if (isFirstClick) {
+		isFirstClick = false;	// Set the flag to false after the first click
+
+		e("#display").innerText = generateValidRandomNumber();
+		timerInterval = setInterval(() => {
+			updateTimer();
+			result();
+		}, 1000);	// Assign the interval ID to the higher-scoped variable
+	}
+});
+
+
+
+
+// -----------------------------------------------------------------------------------
+
+
+</script>
+</body>
+</html>
